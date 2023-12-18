@@ -16,7 +16,7 @@
       "i18n": {
         "sourceLocale": "ar-SA",
         "locales": {
-          "en": {
+          "en-US": {
             "translation": "src/locale/translation.en.xlf"
           }
         }

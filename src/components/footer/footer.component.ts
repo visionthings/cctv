@@ -14,25 +14,25 @@ export class FooterComponent {
     {
       id: 1,
       title: 'Facebok',
-      iconURL: '../../assets/images/social_media/fb.png',
+      iconURL: 'assets/images/social_media/fb.png',
       url: 'https://www.facebook.com/visionthings.sa',
     },
     {
       id: 2,
       title: 'X',
-      iconURL: '../../assets/images/social_media/x.png',
+      iconURL: 'assets/images/social_media/x.png',
       url: 'https://twitter.com/visionthings_sa',
     },
     {
       id: 3,
       title: 'LinkedIn',
-      iconURL: '../../assets/images/social_media/linkedin.png',
+      iconURL: 'assets/images/social_media/linkedin.png',
       url: 'https://www.linkedin.com/company/visionthings',
     },
     {
       id: 4,
       title: 'YouTube',
-      iconURL: '../../assets/images/social_media/yt.png',
+      iconURL: 'assets/images/social_media/yt.png',
       url: 'https://www.youtube.com/@visionthings_sa',
     },
   ];
