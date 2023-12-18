@@ -14,10 +14,7 @@
       "sourceRoot": "src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale": {
-          "code": "ar-SA",
-          "baseHref": "/"
-        },
+        "sourceLocale": "ar-SA",
         "locales": {
           "en-US": {
             "translation": "src/locale/translation.en.xlf"
