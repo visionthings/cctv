@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.section {
+  width: 300px;
+}
+.section:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}

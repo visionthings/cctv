@@ -1,0 +1,21 @@
+<header class="grid grid-cols-1 md:grid-cols-2">
+  <div class="container flex flex-col justify-center">
+    <div class="flex flex-col gap-10 container">
+      <h1 class="text-6xl text-white" i18n>عن الشركة</h1>
+      <h2 class="text-3xl text-teal-600" i18n>تقابل مع فريقنا...</h2>
+      <div>
+        <a routerLink="/contact-us"
+          ><button class="main-button" i18n>اتصل بنا</button></a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="relative w-full h-full hidden md:block">
+    <img
+      ngSrc="assets/images/about_brain.png"
+      alt="header"
+      fill
+      [class.reverse]="isAr"
+    />
+  </div>
+</header>

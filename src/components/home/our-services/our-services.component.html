@@ -1,0 +1,23 @@
+<section class="mt-20 flex flex-col gap-10 container">
+  <h3 class="text-white text-3xl text-center" i18n>خدماتنا</h3>
+  <p class="text-center" i18n>
+    تقدم شركة رؤية الأشياء العديد من الخدمات التقنية والمعلوماتية والشبكات
+    وغيرها من الخدمات التي يمكنك الاطلاع عليها ومعرفة المزيد عنها
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    @for (service of services; track service.id) {
+    <div class="section container py-5 service">
+      <div class="mb-3 flex gap-3">
+        <div
+          [id]="service.id"
+          class="rounded flex justify-center items-center p-2"
+        >
+          <span class="material-symbols-outlined text-white"> memory </span>
+        </div>
+        <p i18n class="text-white text-xl">{{ service.title }}</p>
+      </div>
+      <p i18n>{{ service.description }}</p>
+    </div>
+    }
+  </div>
+</section>

@@ -1,0 +1,135 @@
+<nav class="flex flex-col justify-center container">
+  <div class="flex justify-between items-center h-full relative">
+    <!-- Menu Button -->
+    <div class="lg:hidden">
+      <button id="nav-button" (click)="toggleNavbarMenu()">
+        <span class="material-symbols-outlined text-3xl"> menu </span>
+      </button>
+    </div>
+
+    <!-- Navbar Menu -->
+    <div
+      id="navbar-menu"
+      class="absolute top-full w-full h-0 transition-all duration-300 truncate pt-5 px-5"
+      [class.h-80]="NavbarMenuIsActive"
+    >
+      <ul>
+        <li class="mb-5">
+          <a routerLink="/home" routerLinkActive="active" i18n>الرئيسية</a>
+        </li>
+        <li class="mb-5">
+          <a routerLink="/about-us" routerLinkActive="active" i18n>عن الشركة</a>
+        </li>
+        @if (isAr()) { @for (navlink of navlinks; track navlink.id) {
+        <li
+          mat-button
+          [matMenuTriggerFor]="menu"
+          class="flex gap-1 navlink mb-5"
+        >
+          <p>{{ navlink.title_ar }}</p>
+
+          <span class="material-symbols-outlined"> arrow_drop_down </span>
+        </li>
+        <mat-menu #menu="matMenu" class="nav-categories">
+          @for (page of navlink.pages; track $index) {
+          <a [routerLink]="['/services', page.slug]"
+            ><p mat-menu-item>
+              {{ page.title_ar }}
+            </p></a
+          >
+          }
+        </mat-menu>
+        } } @else { @for (navlink of navlinks; track navlink.id) {
+        <li
+          mat-button
+          [matMenuTriggerFor]="menu"
+          class="flex gap-1 navlink mb-5"
+        >
+          <p>{{ navlink.title_en }}</p>
+
+          <span class="material-symbols-outlined"> arrow_drop_down </span>
+        </li>
+        <mat-menu #menu="matMenu" class="nav-categories">
+          @for (page of navlink.pages; track $index) {
+          <a [routerLink]="['/services', page.slug]"
+            ><p mat-menu-item>
+              {{ page.title_en }}
+            </p></a
+          >
+          }
+        </mat-menu>
+        } }
+        <li class="mb-5">
+          <a routerLink="/contact-us" routerLinkActive="active" i18n
+            >اتصل بنا</a
+          >
+        </li>
+      </ul>
+    </div>
+    <!-- Logo -->
+    <div>
+      <img
+        ngSrc="../../assets/images/logo.png"
+        alt="Logo"
+        width="40"
+        height="40"
+        priority
+      />
+    </div>
+
+    <!-- Nav links -->
+    <div class="hidden lg:flex">
+      <ul class="flex gap-5">
+        <li>
+          <a routerLink="/home" routerLinkActive="active" i18n>الرئيسية</a>
+        </li>
+        <li>
+          <a routerLink="/about-us" routerLinkActive="active" i18n>عن الشركة</a>
+        </li>
+        @if (isAr()) { @for (navlink of navlinks; track navlink.id) {
+        <li mat-button [matMenuTriggerFor]="menu" class="flex gap-1 navlink">
+          <p>{{ navlink.title_ar }}</p>
+
+          <span class="material-symbols-outlined"> arrow_drop_down </span>
+        </li>
+        <mat-menu #menu="matMenu" class="nav-categories">
+          @for (page of navlink.pages; track $index) {
+          <a [routerLink]="['/services', page.slug]"
+            ><p mat-menu-item>
+              {{ page.title_ar }}
+            </p></a
+          >
+          }
+        </mat-menu>
+        } } @else { @for (navlink of navlinks; track navlink.id) {
+        <li mat-button [matMenuTriggerFor]="menu" class="flex gap-1 navlink">
+          <p>{{ navlink.title_en }}</p>
+
+          <span class="material-symbols-outlined"> arrow_drop_down </span>
+        </li>
+        <mat-menu #menu="matMenu" class="nav-categories">
+          @for (page of navlink.pages; track $index) {
+          <a [routerLink]="['/services', page.slug]"
+            ><p mat-menu-item>
+              {{ page.title_en }}
+            </p></a
+          >
+          }
+        </mat-menu>
+        } }
+
+        <li>
+          <a routerLink="/contact-us" routerLinkActive="active" i18n
+            >اتصل بنا</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Language -->
+    <div class="flex">
+      <p class="mx-2" i18n>En</p>
+      <span class="material-symbols-outlined"> globe </span>
+    </div>
+  </div>
+</nav>
