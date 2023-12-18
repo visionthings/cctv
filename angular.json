@@ -17,7 +17,8 @@
         "sourceLocale": "ar-SA",
         "locales": {
           "en-US": {
-            "translation": "src/locale/translation.en.xlf"
+            "translation": "src/locale/translation.en.xlf",
+            "baseHref": ""
           }
         }
       },
