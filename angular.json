@@ -18,7 +18,7 @@
         "locales": {
           "en": {
             "translation": "src/locale/translation.en.xlf",
-            "baseHref": "en"
+            "baseHref": "en-US"
           }
         }
       },
