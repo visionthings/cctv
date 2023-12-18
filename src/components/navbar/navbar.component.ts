@@ -53,9 +53,13 @@ export class NavbarComponent implements OnInit {
   // Change language
   changeLanguage() {
     if (this.route.url.startsWith('/ar-SA')) {
+      console.log(`starts ${this.route.url}`);
+
       let newUrl = this.route.url.replace('/ar-SA', '/en-SA');
       this.route.navigateByUrl(newUrl);
     } else {
+      console.log(this.route.url);
+
       let newUrl = this.route.url.replace('/en-SA', '/ar-SA');
       this.route.navigateByUrl(newUrl);
     }
