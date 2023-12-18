@@ -16,4 +16,5 @@ export const routes: Routes = [
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'return-policy', component: ReturnPolicyComponent },
   { path: 'services/:id', component: DynamicContentComponent },
+  { path: '**', component: HomeComponent },
 ];
