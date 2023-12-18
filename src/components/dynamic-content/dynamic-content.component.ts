@@ -59,7 +59,9 @@ export class DynamicContentComponent implements OnInit, OnChanges {
     this.dynamicContent.fetchPages().subscribe({
       next: (res: any) => {
         this.pages = res;
-        this.currentPage = res.find((page: any) => page.slug == this.id);
+        this.currentPage = res.find(
+          (page: any) => `${this.locale}/${page.slug}` == this.id
+        );
       },
     });
     this.primarySection = this.currentPage?.contents?.find(
