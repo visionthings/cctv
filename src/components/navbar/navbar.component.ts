@@ -5,10 +5,8 @@ import {
   OnInit,
   LOCALE_ID,
   Inject,
-  OnChanges,
-  SimpleChanges,
 } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 import { DynamicContentService } from '../../services/dynamic-content.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,6 +29,7 @@ import { first } from 'rxjs';
 export class NavbarComponent implements OnInit {
   constructor(
     private dynamicContent: DynamicContentService,
+    private route: Router,
     @Inject(LOCALE_ID) public locale: string
   ) {}
 
@@ -50,6 +49,17 @@ export class NavbarComponent implements OnInit {
   }
 
   navlinks: any[] = [];
+
+  // Change language
+  changeLanguage() {
+    if (this.route.url.startsWith('/ar-SA')) {
+      let newUrl = this.route.url.replace('/ar-SA', '/en-SA');
+      this.route.navigateByUrl(newUrl);
+    } else {
+      let newUrl = this.route.url.replace('/en-SA', '/ar-SA');
+      this.route.navigateByUrl(newUrl);
+    }
+  }
 
   ngOnInit(): void {
     // Fetch navlinks
