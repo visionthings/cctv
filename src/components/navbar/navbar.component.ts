@@ -53,15 +53,7 @@ export class NavbarComponent implements OnInit {
   // Change language
   changeLanguage() {
     if (typeof window !== 'undefined') {
-      const currentURL = window.location.href;
-      let newURL;
-      if (currentURL.includes('ar-SA')) {
-        newURL = currentURL.replace('ar-SA', 'en-US');
-        window.location.assign(newURL);
-      } else {
-        newURL = currentURL.replace('en-US', 'ar-SA');
-        window.location.assign(newURL);
-      }
+      location.href = `https://vision-things.com${this.route.url}`;
     }
   }
 
