@@ -1,0 +1,148 @@
+<section class="py-10 section container">
+  <form [formGroup]="camerasForm" (ngSubmit)="onSubmit()">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div>
+        <label for="indoor_cameras" class="block mb-1"
+          >عدد الكاميرات الداخلية</label
+        >
+        <input
+          id="indoor_cameras"
+          name="indoor_cameras"
+          formControlName="indoor_cameras"
+          (change)="calcPrice()"
+        />
+        <div
+          *ngIf="
+            indoor_cameras.invalid &&
+            (indoor_cameras.dirty || indoor_cameras.touched)
+          "
+          class="w-100 py-2 container bg-pink-300 text-rose-700 mt-1 rounded"
+        >
+          <p *ngIf="indoor_cameras.errors?.['required']">
+            ادخل عدد الكاميرات الداخلية.
+          </p>
+          <p *ngIf="indoor_cameras.errors?.['pattern']">ادخل أرقام فقط.</p>
+        </div>
+      </div>
+      <div>
+        <label for="outdoor_cameras" class="block mb-1"
+          >عدد الكاميرات الخارجية</label
+        >
+        <input
+          id="outdoor_cameras"
+          name="outdoor_cameras"
+          formControlName="outdoor_cameras"
+          (change)="calcPrice()"
+        />
+        <div
+          *ngIf="
+            outdoor_cameras.invalid &&
+            (outdoor_cameras.dirty || outdoor_cameras.touched)
+          "
+          class="w-100 py-2 container bg-pink-300 text-rose-700 mt-1 rounded"
+        >
+          <p *ngIf="outdoor_cameras.errors?.['required']">
+            ادخل عدد الكاميرات الخارجية.
+          </p>
+          <p *ngIf="outdoor_cameras.errors?.['pattern']">ادخل أرقام فقط.</p>
+        </div>
+      </div>
+      <div>
+        <label for="storage_device" class="block mb-1">نوع وحدة التخزين</label>
+        <select
+          id="storage_device"
+          name="storage_device"
+          formControlName="storage_device"
+        >
+          <option value="NVR">NVR</option>
+          <option value="CCTV">CCTV</option>
+        </select>
+        <div
+          *ngIf="
+            storage_device.invalid &&
+            (storage_device.dirty || storage_device.touched)
+          "
+          class="w-100 py-2 container bg-pink-300 text-rose-700 mt-1 rounded"
+        >
+          <p *ngIf="storage_device.errors?.['required']">
+            ادخل نوع وحدة التخزين.
+          </p>
+        </div>
+      </div>
+      <div>
+        <label for="period_of_record" class="block mb-1">مدة التسجيل</label>
+        <select
+          id="period_of_record"
+          name="period_of_record"
+          formControlName="period_of_record"
+        >
+          @for (period of periods; track period.id) {
+          <option [value]="period.id">{{ period.title }}</option>
+          }
+        </select>
+        <div
+          *ngIf="
+            period_of_record.invalid &&
+            (period_of_record.dirty || period_of_record.touched)
+          "
+          class="w-100 py-2 container bg-pink-300 text-rose-700 mt-1 rounded"
+        >
+          <p *ngIf="period_of_record.errors?.['required']">ادخل مدة التسجيل.</p>
+        </div>
+      </div>
+      <div>
+        <label for="show_screens" class="block mb-1">عدد شاشات العرض</label>
+        <input
+          id="show_screens"
+          name="show_screens"
+          formControlName="show_screens"
+        />
+        <div
+          *ngIf="
+            show_screens.invalid && (show_screens.dirty || show_screens.touched)
+          "
+          class="w-100 py-2 container bg-pink-300 text-rose-700 mt-1 rounded"
+        >
+          <p *ngIf="show_screens.errors?.['required']">ادخل عدد شاشات العرض.</p>
+          <p *ngIf="show_screens.errors?.['pattern']">ادخل أرقام فقط.</p>
+        </div>
+      </div>
+      <div>
+        <label for="camera_type" class="block mb-1">نوع الكاميرا</label>
+        <select
+          id="camera_type"
+          name="camera_type"
+          formControlName="camera_type"
+        >
+          <option value="EZVIZ">EZVIZ</option>
+          <option value="Hikvision">Hikvision</option>
+          <option value="Dahua">Dahua</option>
+        </select>
+        <div
+          *ngIf="
+            camera_type.invalid && (camera_type.dirty || camera_type.touched)
+          "
+          class="w-100 py-2 container bg-pink-300 text-rose-700 mt-1 rounded"
+        >
+          <p *ngIf="camera_type.errors?.['required']">ادخل نوع الكاميرا.</p>
+        </div>
+      </div>
+      <!-- Total price -->
+      <div
+        class="md:col-span-2 bg-teal-50 rounded-lg container py-3 grid-cols-1 md:grid-cols-2 gap-10"
+      >
+        <p class="text-center text-teal-500">
+          السعر غير شامل ضريبة القيمة المضافة {{ price }} ريال سعودي
+        </p>
+      </div>
+    </div>
+    <div class="mt-10 w-full h-0.5 bg-teal-500 mb-10"></div>
+    <div class="flex justify-between">
+      <a routerLink="/personal-information"> <button>عودة</button> </a>
+
+      <button [disabled]="!camerasForm.valid" type="submit">
+        <p>استمرار</p>
+      </button>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+label {
+  color: #51a29d;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  border: 2px solid #51a29d;
+  background-color: transparent;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+input:focus,
+select:focus {
+  outline: none;
+}
+
+input,
+select {
+  height: 50px;
+}

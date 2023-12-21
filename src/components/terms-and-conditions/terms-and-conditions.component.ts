@@ -1,37 +1,52 @@
-import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-terms-and-conditions',
   standalone: true,
-  imports: [NgOptimizedImage],
+  imports: [ReactiveFormsModule],
   templateUrl: './terms-and-conditions.component.html',
   styleUrl: './terms-and-conditions.component.scss',
 })
 export class TermsAndConditionsComponent {
-  terms: {
-    id: number;
-    icon: string;
-    title: string;
-    description: string;
-  }[] = [
+  constructor(private fb: FormBuilder, private router: Router) {}
+  items = [
     {
       id: 1,
-      icon: 'assets/images/terms_and_conditions/1.png',
-      title: $localize`الخدمات`,
-      description: $localize`الخدمات نحن نقدم خدمات تركيب وصيانة كاميرات المراقبة للأفراد والشركات وفقا للعقود المبرمة معنا. يمكنك طلب خدمتنا عن طريق إنشاء عقد جديد على الموقع أو طلب زيارة من فريقنا. نحن نضمن جودة خدمتنا وضمان كاميرات المراقبة لمدة سنة واحدة من تاريخ التركيب.`,
+      title:
+        'العقد إلكتروني، ويتم إصداره بخطوة واحدة بعد دفع العقد ويمكن التحقق منه من خلال QR.',
     },
     {
       id: 2,
-      icon: 'assets/images/terms_and_conditions/2.png',
-      title: $localize`المسئولية`,
-      description: $localize`المسؤلية نحن نتحمل المسؤولية عن أي خسارة أو ضرر ناجم عن خطأ أو تقصير من جانبنا أو فريقنا أثناء تقديم الخدمة. ولكن نحن لا نتحمل المسؤولية عن أي خسارة أو ضرر ناجم عن سوء استخدام أو تدخل غير مصرح به أو عوامل خارجة عن سيطرتنا. كما أننا لا نتحمل المسؤولية عن أي محتوى أو بيانات يتم تسجيلها أو نقلها أو حفظها بواسطة كاميرات المراقبة. عليك أن تحترم قوانين حماية الخصوصية وحقوق الآخرين عند استخدام كاميرات المراقبة.`,
+      title:
+        'ويكون العميل أو الطرف الثاني مسؤولاً عن البيانات المدخلة في العقد.',
     },
     {
       id: 3,
-      icon: 'assets/images/terms_and_conditions/3.png',
-      title: $localize`الملكية الفكرية`,
-      description: $localize`جميع حقوق الملكية الفكرية في هذا الموقع ومحتواه تخضع للحماية القانونية وتنتمي إلينا أو إلى مرخصينا. لا يجوز لك نسخ أو تعديل أو توزيع أو نشر أو عرض أو استخدام أو إعادة إنتاج أو نقل أو بيع أو إنشاء أعمال مشتقة من أي جزء من هذا الموقع أو محتواه دون الحصول على إذن خطي منا أو من مرخصينا.`,
+      title:
+        'تم إصدار العقد من قبل منشأة مرخصة لتقديم خدمة الصيانة للجهات الأمنية من قبل الهيئة العليا للأمن الصناعي.',
     },
+    {
+      id: 4,
+      title: 'لا يمكن طلب استرداد الأموال إذا تمت طباعة العقد أو تحميل العقد.',
+    },
+    { id: 5, title: 'ستكون هناك رسوم إضافية إذا طلب العميل الزيارة.' },
   ];
+
+  agreementForm = this.fb.group({
+    termsAndConditions: ['', Validators.requiredTrue],
+    privacyPolicy: ['', Validators.requiredTrue],
+  });
+
+  errorMessage: string | null = null;
+
+  onSubmit() {
+    if (!this.agreementForm.valid) {
+      this.errorMessage =
+        'برجاء الموافقة أولاً على اتفاقية الشروط والأحكام وسياسة الخصوصية';
+    } else {
+      this.router.navigateByUrl('/personal-information');
+    }
+  }
 }

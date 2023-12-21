@@ -1,0 +1,37 @@
+<div class="container py-5 hidden md:block">
+  <div
+    class="stepper rounded-lg container hidden md:flex justify-between items-center py-5"
+  >
+    @for (item of items; track item.id) {
+    <div class="flex gap-4 items-center">
+      <div id="step-number" class="flex justify-center items-center">
+        @if(currentStep > item.id){
+        <span class="material-symbols-outlined text-teal-500"> done </span>
+        } @else {
+        <p class="text-white">{{ item.id }}</p>
+        }
+      </div>
+      @if(currentStep > item.id) {
+      <p>{{ item.title }}</p>
+      } @else if (currentStep === item.id) {
+      <p class="text-teal-500">{{ item.title }}</p>
+      } @else {
+      <p class="text-white">{{ item.title }}</p>
+      }
+    </div>
+    }
+  </div>
+</div>
+
+<!-- On small screen -->
+
+<div class="container py-5 md:hidden">
+  <div class="stepper rounded-lg container py-5">
+    <div class="flex justify-between items-center">
+      <p>{{ title }}</p>
+      <div id="step-number" class="flex justify-center items-center">
+        <p class="text-white">5 / {{ currentStep }}</p>
+      </div>
+    </div>
+  </div>
+</div>

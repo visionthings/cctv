@@ -13,14 +13,6 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "i18n": {
-        "sourceLocale": "ar-SA",
-        "locales": {
-          "en-US": {
-            "translation": "src/locale/translation.en.xlf"
-          }
-        }
-      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",

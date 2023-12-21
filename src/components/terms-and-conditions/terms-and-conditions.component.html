@@ -1,16 +1,49 @@
-<section class="my-20 container">
-  <h3 i18n class="text-white text-center text-3xl mb-10">الشروط والأحكام</h3>
-  <div class="grid grid-cols-1 gap-10">
-    @for (term of terms; track term.id) {
-    <div class="section container py-5 flex">
-      <div class="flex flex-col justify-center">
-        <img [ngSrc]="term.icon" alt="Term Icon" width="50" height="50" />
-      </div>
-      <div class="container">
-        <h5 class="text-xl text-teal-500">{{ term.title }}</h5>
-        <p>{{ term.description }}</p>
-      </div>
-    </div>
+<section class="section container">
+  <h3 class="text-teal-500 text-3xl text-center mb-10">
+    مرحبا بكم في خدمة العقد الالكتروني لصيانة الكاميرات الأمنية
+  </h3>
+  <h5 class="text-white text-lg mb-5">الشروط والأحكام:</h5>
+  <ol type="I" class="list-inside list-roman pr-5 flex flex-col gap-3">
+    @for (item of items; track item.id) {
+    <li>{{ item.title }}</li>
     }
+  </ol>
+  <div class="pt-10">
+    <form [formGroup]="agreementForm" (ngSubmit)="onSubmit()">
+      <div class="flex gap-5 mb-5">
+        <input
+          name="termsAndConditions"
+          type="checkbox"
+          class="w-5 h-5 rounded"
+          formControlName="termsAndConditions"
+        />
+        <label for="terms-and-conditions" class="text-white"
+          >أوافق على هذه الشروط والأحكام وبقية الشروط والأحكام.</label
+        >
+      </div>
+      <div class="flex gap-5">
+        <input
+          name="privacyPolicy"
+          type="checkbox"
+          class="w-5 h-5 rounded"
+          formControlName="privacyPolicy"
+        />
+        <label for="privacy-policy" class="text-white"
+          >أوافق على سياسة الإسترجاع والخصوصية.</label
+        >
+      </div>
+      <div class="mt-10 w-full h-0.5 bg-teal-500"></div>
+      @if(errorMessage) {
+      <div
+        class="mt-10 rounded bg-rose-700 text-white py-5 container text-center"
+      >
+        {{ errorMessage }}
+      </div>
+      }
+
+      <div class="pt-10 flex justify-center">
+        <button type="submit">استمرار</button>
+      </div>
+    </form>
   </div>
 </section>

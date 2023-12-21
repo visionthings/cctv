@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.stepper {
+  background-color: #0c1933;
+  border: 2px solid #14b8a6;
+}
+
+#step-number {
+  background-color: #010e28;
+  border: 2px solid #14b8a6;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+}
+
+.active {
+  color: #14b8a6 !important;
+}
